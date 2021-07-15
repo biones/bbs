@@ -1,6 +1,7 @@
-1. docker-compose up &
+1. 
+docker-compose up &
 
-2. DBにデータを入れる 
+2. DBにデータを入れる  
 cat dump.sql | docker exec -i bbs_db_1  psql -U postgres
 
 
