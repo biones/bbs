@@ -1058,3 +1058,4 @@ ALTER TABLE ONLY public.django_admin_log
 -- PostgreSQL database cluster dump complete
 --
 
+SELECT setval('tablename_id_seq', (SELECT MAX(id) FROM tablename)+1);
