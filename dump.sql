@@ -630,27 +630,27 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 --
 
 COPY public.django_migrations (id, app, name, applied) FROM stdin;
-1	contenttypes	0001_initial	2021-07-15 06:15:01.604285+00
-2	auth	0001_initial	2021-07-15 06:15:01.646149+00
-3	admin	0001_initial	2021-07-15 06:15:01.656665+00
-4	admin	0002_logentry_remove_auto_add	2021-07-15 06:15:01.661074+00
-5	admin	0003_logentry_add_action_flag_choices	2021-07-15 06:15:01.664528+00
-6	contenttypes	0002_remove_content_type_name	2021-07-15 06:15:01.672913+00
-7	auth	0002_alter_permission_name_max_length	2021-07-15 06:15:01.67647+00
-8	auth	0003_alter_user_email_max_length	2021-07-15 06:15:01.679513+00
-9	auth	0004_alter_user_username_opts	2021-07-15 06:15:01.682663+00
-10	auth	0005_alter_user_last_login_null	2021-07-15 06:15:01.686038+00
-11	auth	0006_require_contenttypes_0002	2021-07-15 06:15:01.687101+00
-12	auth	0007_alter_validators_add_error_messages	2021-07-15 06:15:01.691493+00
-13	auth	0008_alter_user_username_max_length	2021-07-15 06:15:01.697557+00
-14	auth	0009_alter_user_last_name_max_length	2021-07-15 06:15:01.701932+00
-15	auth	0010_alter_group_name_max_length	2021-07-15 06:15:01.705511+00
-16	auth	0011_update_proxy_permissions	2021-07-15 06:15:01.709327+00
-17	auth	0012_alter_user_first_name_max_length	2021-07-15 06:15:01.714087+00
-18	bbs	0001_initial	2021-07-15 06:15:01.719609+00
-19	bbs	0002_auto_20210714_1409	2021-07-15 06:15:01.726391+00
-20	bbs	0003_alter_posts_id	2021-07-15 06:15:01.734437+00
-21	sessions	0001_initial	2021-07-15 06:15:01.741253+00
+1	contenttypes	0001_initial	2021-07-15 10:16:17.705846+00
+2	auth	0001_initial	2021-07-15 10:16:17.753172+00
+3	admin	0001_initial	2021-07-15 10:16:17.762583+00
+4	admin	0002_logentry_remove_auto_add	2021-07-15 10:16:17.767469+00
+5	admin	0003_logentry_add_action_flag_choices	2021-07-15 10:16:17.771976+00
+6	contenttypes	0002_remove_content_type_name	2021-07-15 10:16:17.779157+00
+7	auth	0002_alter_permission_name_max_length	2021-07-15 10:16:17.782804+00
+8	auth	0003_alter_user_email_max_length	2021-07-15 10:16:17.786507+00
+9	auth	0004_alter_user_username_opts	2021-07-15 10:16:17.789676+00
+10	auth	0005_alter_user_last_login_null	2021-07-15 10:16:17.792799+00
+11	auth	0006_require_contenttypes_0002	2021-07-15 10:16:17.793755+00
+12	auth	0007_alter_validators_add_error_messages	2021-07-15 10:16:17.796603+00
+13	auth	0008_alter_user_username_max_length	2021-07-15 10:16:17.801234+00
+14	auth	0009_alter_user_last_name_max_length	2021-07-15 10:16:17.805305+00
+15	auth	0010_alter_group_name_max_length	2021-07-15 10:16:17.808806+00
+16	auth	0011_update_proxy_permissions	2021-07-15 10:16:17.812596+00
+17	auth	0012_alter_user_first_name_max_length	2021-07-15 10:16:17.817247+00
+18	bbs	0001_initial	2021-07-15 10:16:17.820209+00
+19	bbs	0002_auto_20210714_1409	2021-07-15 10:16:17.823897+00
+20	bbs	0003_alter_posts_id	2021-07-15 10:16:17.828445+00
+21	sessions	0001_initial	2021-07-15 10:16:17.834398+00
 \.
 
 
@@ -740,7 +740,7 @@ SELECT pg_catalog.setval('public.django_migrations_id_seq', 21, true);
 -- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.posts_id_seq', 1, true);
+SELECT pg_catalog.setval('public.posts_id_seq', 10000, true);
 
 
 --
@@ -1049,6 +1049,7 @@ ALTER TABLE ONLY public.django_admin_log
 ALTER TABLE ONLY public.django_admin_log
     ADD CONSTRAINT django_admin_log_user_id_c564eba6_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
 
+---SELECT setval('table_id_seq', (1000000)+1);
 
 --
 -- PostgreSQL database dump complete
@@ -1058,4 +1059,3 @@ ALTER TABLE ONLY public.django_admin_log
 -- PostgreSQL database cluster dump complete
 --
 
-SELECT setval('tablename_id_seq', (SELECT MAX(id) FROM tablename)+1);
