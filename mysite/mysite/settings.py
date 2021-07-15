@@ -87,16 +87,6 @@ DATABASES = {
         'HOST': 'db',
         'PORT': 5432,
     },
-    '''
-    'default2': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django', #　作成したデータベース名
-        'USER': 'django', # ログインユーザー名
-        'PASSWORD':'rootpass',
-        'HOST': 'localhost',
-        'PORT': 3306,
-    },
-    '''
     'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
