@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+    dbm:
+        platform: linux/x86_64
+        image: mysql
+        ports:
+            - "3306:3306"
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        volumes:
+            - .:/var/www/webapp
+        restart: always
+        #volumes:
+            # 初期データを投入するSQLが格納されているdir
+            #- ./db/mysql_init:/docker-entrypoint-initdb.d
+            # 永続化するときにマウントするdir
+            #- ./db/mysql_data:/var/lib/mysql
+
+        environment:
+            MYSQL_USER: django
+            MYSQL_DATABASE: django
+            MYSQL_ROOT_PASSWORD: rootpass
+            MYSQL_PASSWORD: rootpass
+    db:
+        image: postgres
+    web:
+        build: .
+        #command: python mysite/manage.py runserver 0.0.0.0:9000
+        command: sh -c "./wait-for-it.sh db:3306; python3 ./mysite/manage.py runserver 0.0.0.0:9000"
+        volumes:
+             - .:/code
+        ports:
+            - "9000:9000"
+        depends_on:
+            - db
+
